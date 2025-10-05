@@ -29,3 +29,7 @@ jobs:
           APIKEY: ${{ secrets.LEGISCAN_APIKEY }}
         run: ./pipeline.bash
       - uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_user_name: github-actions[bot]
+          commit_user_email: github-actions[bot]@users.noreply.github.com
+          commit_author: github-actions[bot] <github-actions[bot]@users.noreply.github.com>
