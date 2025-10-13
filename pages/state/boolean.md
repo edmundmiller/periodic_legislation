@@ -1,7 +1,7 @@
 ---
 title: Boolean
 queries:
-    - long_states.sql
+    - long_state.sql
 ---
 
 ```sql state_stats
@@ -10,15 +10,15 @@ select * from handpicked.dummy
 
 <DataTable data={state_stats}/>
 
-<USMap 
-    data={long_states} 
+<USMap
+    data={long_state}
     state="State" 
     value="total_true_count" 
     colorScale="blue" 
     abbreviations=true
     tooltip={{
         formatter: (state) => {
-            const row = state_true_counts.find(item => item.State === state);
+            const row = long_state.find(item => item.State === state);
             return `
                 <strong>${state}</strong><br>
                 Total True Values: ${row.total_true_count}<br>
