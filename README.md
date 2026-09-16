@@ -1,3 +1,27 @@
+# Period Care Bills Tracker
+
+Live site: **[https://edmundmiller.github.io/periodic_legislation/](https://edmundmiller.github.io/periodic_legislation/)**
+
+The previous Evidence Cloud homepage is still at [https://getperiodic.evidence.app](https://getperiodic.evidence.app). That host is not updated by this repo’s pipeline.
+
+## Deployment
+
+The daily workflow (`.github/workflows/run-pipeline.yml`) refreshes LegiScan data **in the runner**, builds the Evidence static site (`npm run sources` + `npm run build`), and deploys the `build/` output to GitHub Pages.
+
+It does **not** commit generated CSVs or site files back to `main` (or any other branch). After merge, the midnight job can refresh the site without a new commit on the contribution graph.
+
+### Enable GitHub Pages (one-time, required)
+
+1. Open the repo **Settings → Pages**
+2. Set **Source** to **GitHub Actions** (not “Deploy from a branch”)
+3. After the first successful `Run Pipeline Daily` run, the site is at `https://edmundmiller.github.io/periodic_legislation/`
+
+Pages uses the default `GITHUB_TOKEN` with `pages: write` and `id-token: write`. No extra deploy secrets. The pipeline still needs `secrets.LEGISCAN_APIKEY` for the LegiScan fetch.
+
+### Summaries workflow
+
+`.github/workflows/run-summaries.yml` is dispatch-only (the monthly schedule is commented out). It no longer auto-commits. Generated `sources/generated/state_period_care_vibes.csv` is uploaded as a workflow artifact; commit it via a PR if you want it persisted for later builds.
+
 # Evidence Template Project
 
 ## Using Codespaces
