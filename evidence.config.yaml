@@ -1,3 +1,8 @@
+# GitHub Pages serves this app at /periodic_legislation (no custom domain).
+# See https://docs.evidence.dev/deployment/self-host/github-pages
+deployment:
+  basePath: /periodic_legislation
+
 # Appearance settings
 appearance:
   default: system
